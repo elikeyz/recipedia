@@ -1,0 +1,28 @@
+main {
+  background-image: url('../../static/images/background.jpg');
+  height: 100%;
+  background-size: cover;
+}
+
+.overlay {
+  height: 100%;
+  background-color: rgba(255,255,255,0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container {
+  text-align: center;
+
+  button {
+    background-color: #FF4A83;
+    border: 1px solid #FF4A83;
+
+    &:hover {
+      background-color: white;
+      color: #FF4A83;
+      border: 1px solid #FF4A83;
+    }
+  }
+}

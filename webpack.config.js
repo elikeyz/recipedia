@@ -33,9 +33,22 @@ module.exports = {
         },
         ],
       },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          'file-loader',
+        ],
+      },
     ],
   },
-  resolve: { extensions: ['*', '.js', '.jsx', '.css'] },
+  resolve: {
+    extensions: ['*', '.js', '.jsx', '.css'],
+    alias: {
+      components: path.resolve(__dirname, 'src/components'),
+      pages: path.resolve(__dirname, 'src/components'),
+      static: path.resolve(__dirname, 'src/static'),
+    },
+  },
   output: {
     path: path.resolve(__dirname, 'build/'),
     publicPath: './',
@@ -46,12 +59,14 @@ module.exports = {
     port: 3000,
     publicPath: 'http://localhost:3000/',
     inline: true,
+    historyApiFallback: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: './index.html',
       filename: 'index.html',
       inject: 'body',
+      favicon: './src/static/images/recipedia logo.png',
     }),
   ],
 };
