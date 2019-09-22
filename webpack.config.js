@@ -47,6 +47,10 @@ module.exports = {
       components: path.resolve(__dirname, 'src/components'),
       pages: path.resolve(__dirname, 'src/components'),
       static: path.resolve(__dirname, 'src/static'),
+      store: path.resolve(__dirname, 'src/store'),
+      actions: path.resolve(__dirname, 'src/store/actions'),
+      constants: path.resolve(__dirname, 'src/store/constants'),
+      reducers: path.resolve(__dirname, 'src/store/reducers'),
     },
   },
   output: {
@@ -69,4 +73,7 @@ module.exports = {
       favicon: './src/static/images/recipedia logo.png',
     }),
   ],
+  node: {
+    fs: 'empty',
+  },
 };

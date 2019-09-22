@@ -7,9 +7,9 @@ import './home.scss';
 class Home extends Component {
   render() {
     return (
-      <main>
+      <main className="landing-background">
         <div className="overlay">
-          <Container>
+          <Container className="landing-container">
             <h1>Welcome to Recipedia</h1>
             <h2>Explore thousands of recipes from across the globe</h2>
             <br />

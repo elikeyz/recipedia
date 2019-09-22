@@ -1,0 +1,45 @@
+.recipes-background {
+  padding-top: 100px;
+}
+
+button {
+  background-color: #FF4A83;
+  border: 1px solid #FF4A83;
+  width: 25%;
+
+  &:hover {
+    background-color: white;
+    color: #FF4A83;
+    border: 1px solid #FF4A83;
+  }
+}
+
+.container {
+  h1 {
+    text-align: center;
+    font-size: 2rem;
+  }
+}
+
+.cards {
+  display: flex;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .card {
+    width: 25%;
+    margin: 10px;
+    box-shadow: rgba(0,0,0,0.3) 1px 1px 3px 2px;
+    position: relative;
+
+    img {
+      height: 200px;
+    }
+
+    button {
+      position: absolute;
+      bottom: 10px;
+    }
+  }
+}
