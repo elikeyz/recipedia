@@ -14,7 +14,7 @@ class Home extends Component {
             <h2>Explore thousands of recipes from across the globe</h2>
             <br />
             <Link to="/recipes">
-              <Button size="lg">Explore</Button>
+              <Button size="lg" variant="dark">Explore</Button>
             </Link>
           </Container>
         </div>

@@ -2,15 +2,25 @@
   padding-top: 100px;
 }
 
-button {
-  background-color: #FF4A83;
-  border: 1px solid #FF4A83;
-  width: 25%;
+form {
+  .form-group {
+    width: 100%;
 
-  &:hover {
-    background-color: white;
-    color: #FF4A83;
-    border: 1px solid #FF4A83;
+    input {
+      margin: 10px 0;
+    }
+
+    .btn {
+      background-color: #FF4A83;
+      border: 1px solid #FF4A83;
+      width: 25%;
+
+      &:hover {
+        background-color: white;
+        color: #FF4A83;
+        border: 1px solid #FF4A83;
+      }
+    }
   }
 }
 
@@ -40,6 +50,44 @@ button {
     button {
       position: absolute;
       bottom: 10px;
+    }
+
+    .card-body {
+      .h5 {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .cards {
+    .card {
+      width: 40%;
+    }
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  form {
+    .form-group {
+      width: 100%;
+
+      input {
+        width: 100%;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  }
+
+  .cards {
+    justify-content: center;
+
+    .card {
+      width: 70%;
     }
   }
 }

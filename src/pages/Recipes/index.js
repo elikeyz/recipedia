@@ -15,10 +15,27 @@ class Recipes extends Component {
 
     this.state = {
       searchFieldInput: '',
+      sortInput: 'r',
     };
 
     this.handleSearchFieldInputChange = this.handleSearchFieldInputChange.bind(this);
     this.searchRecipes = this.searchRecipes.bind(this);
+    this.handleSortChange = this.handleSortChange.bind(this);
+  }
+
+  componentDidMount() {
+    this.searchRecipes();
+  }
+
+  async searchRecipes(event) {
+    if (event) event.preventDefault();
+    const {
+      getRecipes: searchRecipes, clearRecipes: clearAllRecipes, nextPage: nextPageToRender,
+    } = this.props;
+    const { searchFieldInput, sortInput } = this.state;
+
+    clearAllRecipes();
+    await searchRecipes(searchFieldInput, nextPageToRender, sortInput);
   }
 
   handleSearchFieldInputChange(event) {
@@ -27,17 +44,14 @@ class Recipes extends Component {
     });
   }
 
-  async searchRecipes(event) {
-    event.preventDefault();
-    const { getRecipes: searchRecipes, clearRecipes: clearAllRecipes } = this.props;
-    const { searchFieldInput } = this.state;
-
-    clearAllRecipes();
-    await searchRecipes(searchFieldInput);
+  handleSortChange(event) {
+    this.setState({
+      sortInput: event.target.value,
+    });
   }
 
   render() {
-    const { searchFieldInput } = this.state;
+    const { searchFieldInput, sortInput } = this.state;
     const { recipes, isLoadingRecipes, error } = this.props;
 
     return (
@@ -46,16 +60,25 @@ class Recipes extends Component {
           <h1>Search Recipes by name or ingredient</h1>
           <Row>
             <Col />
-            <Col xs={10} md={8}>
+            <Col xs={12} md={8}>
               <Form inline variant="dark" onSubmit={this.searchRecipes}>
-                <FormControl
-                  type="text"
-                  placeholder="Eg name, ingredient"
-                  className=" mr-sm-2"
-                  value={searchFieldInput}
-                  onChange={this.handleSearchFieldInputChange}
-                />
-                <Button variant="dark" type="submit">Submit</Button>
+                <Form.Group controlId="sortBy" className=" mr-sm-2">
+                  <Form.Label className=" mr-sm-2">Sort by</Form.Label>
+                  <Form.Control as="select" onChange={this.handleSortChange} value={sortInput}>
+                    <option value="r">Rating</option>
+                    <option value="t">Trendingness</option>
+                  </Form.Control>
+                </Form.Group>
+                <Form.Group>
+                  <FormControl
+                    type="text"
+                    placeholder="Eg name, ingredient"
+                    className=" mr-sm-2"
+                    value={searchFieldInput}
+                    onChange={this.handleSearchFieldInputChange}
+                  />
+                  <Button variant="dark" type="submit">Submit</Button>
+                </Form.Group>
               </Form>
             </Col>
             <Col />

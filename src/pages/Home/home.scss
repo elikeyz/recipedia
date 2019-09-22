@@ -27,3 +27,11 @@
     }
   }
 }
+
+@media only screen and (max-width: 576px) {
+  .landing-container {
+    button {
+      width: 50%;
+    }
+  }
+}
