@@ -1,10 +1,10 @@
-/* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
   Container, Row, Col, Form, FormControl, Button, Spinner, Toast,
 } from 'react-bootstrap';
+import debounce from 'lodash.debounce';
 import { getRecipes, clearRecipes } from '../../store/actions';
 import RecipeCard from '../../components/RecipeCard';
 import './recipes.scss';
@@ -21,6 +21,19 @@ class Recipes extends Component {
     this.handleSearchFieldInputChange = this.handleSearchFieldInputChange.bind(this);
     this.searchRecipes = this.searchRecipes.bind(this);
     this.handleSortChange = this.handleSortChange.bind(this);
+
+    window.onscroll = debounce(() => {
+      const {
+        getRecipes: searchForRecipes, error, isLoadingRecipes, hasMore, nextPage,
+      } = this.props;
+      const { searchFieldInput, sortInput } = this.state;
+
+      if (error || isLoadingRecipes || !hasMore) return;
+
+      if (window.innerHeight + document.documentElement.scrollTop === this.myscroll.offsetHeight) {
+        searchForRecipes(searchFieldInput, nextPage, sortInput);
+      }
+    }, 100);
   }
 
   componentDidMount() {
@@ -30,12 +43,14 @@ class Recipes extends Component {
   async searchRecipes(event) {
     if (event) event.preventDefault();
     const {
-      getRecipes: searchRecipes, clearRecipes: clearAllRecipes, nextPage: nextPageToRender,
+      getRecipes: searchForRecipes,
+      clearRecipes: clearAllRecipes,
+      nextPage,
     } = this.props;
     const { searchFieldInput, sortInput } = this.state;
 
     clearAllRecipes();
-    await searchRecipes(searchFieldInput, nextPageToRender, sortInput);
+    await searchForRecipes(searchFieldInput, nextPage, sortInput);
   }
 
   handleSearchFieldInputChange(event) {
@@ -55,7 +70,7 @@ class Recipes extends Component {
     const { recipes, isLoadingRecipes, error } = this.props;
 
     return (
-      <main className="recipes-background">
+      <main className="recipes-background" ref={(c) => { this.myscroll = c; }}>
         <Container>
           <h1>Search Recipes by name or ingredient</h1>
           <Row>
@@ -86,8 +101,17 @@ class Recipes extends Component {
           <div className="cards">
             {recipes.map((recipe) => (<RecipeCard key={recipe.recipe_id} recipe={recipe} />))}
           </div>
-          {isLoadingRecipes ? <Spinner animation="border" variant="dark" /> : ''}
-          {error ? <Toast><Toast.Body>{error}</Toast.Body></Toast> : ''}
+          {isLoadingRecipes && <Spinner animation="border" variant="dark" />}
+          {
+            error && (
+            <Toast>
+              <Toast.Header>
+                <strong>Error</strong>
+              </Toast.Header>
+              <Toast.Body>{error}</Toast.Body>
+            </Toast>
+            )
+          }
         </Container>
       </main>
     );
@@ -101,6 +125,7 @@ Recipes.propTypes = {
   error: PropTypes.string.isRequired,
   isLoadingRecipes: PropTypes.bool.isRequired,
   nextPage: PropTypes.number.isRequired,
+  hasMore: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -108,6 +133,7 @@ const mapStateToProps = (state) => ({
   error: state.error,
   isLoadingRecipes: state.isLoadingRecipes,
   nextPage: state.nextPage,
+  hasMore: state.hasMore,
 });
 
 export default connect(mapStateToProps, { getRecipes, clearRecipes })(Recipes);

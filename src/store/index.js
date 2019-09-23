@@ -6,6 +6,8 @@ import recipeReducer from './reducers';
 
 const middleware = [thunk];
 
-const store = createStore(recipeReducer, composeWithDevTools(applyMiddleware(...middleware)));
+const composeEnhancers = composeWithDevTools({ trace: true, traceLimit: 25 });
+
+const store = createStore(recipeReducer, composeEnhancers(applyMiddleware(...middleware)));
 
 export default store;

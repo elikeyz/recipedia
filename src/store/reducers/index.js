@@ -6,6 +6,7 @@ import {
   GET_RECIPE_STARTED,
   GET_RECIPE_SUCCESS,
   GET_RECIPE_FAILED,
+  MARK_RECIPES_END,
 } from '../constants';
 
 const initialState = {
@@ -15,6 +16,7 @@ const initialState = {
   recipe: {},
   isLoadingRecipes: false,
   isLoadingRecipe: false,
+  hasMore: true,
 };
 
 const recipeReducer = (state = initialState, action) => {
@@ -31,7 +33,9 @@ const recipeReducer = (state = initialState, action) => {
     case GET_RECIPES_FAILED:
       return { ...state, isLoadingRecipes: false, error: action.error };
     case CLEAR_RECIPES:
-      return { ...state, recipes: [], nextPage: 1 };
+      return { ...state, recipes: [], nextPage: 1, hasMore: true };
+    case MARK_RECIPES_END:
+      return { ...state, hasMore: false };
     case GET_RECIPE_STARTED:
       return { ...state, isLoadingRecipe: true, error: '' };
     case GET_RECIPE_SUCCESS:

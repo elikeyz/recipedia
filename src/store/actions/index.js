@@ -9,6 +9,7 @@ import {
   GET_RECIPE_STARTED,
   GET_RECIPE_SUCCESS,
   GET_RECIPE_FAILED,
+  MARK_RECIPES_END,
 } from '../constants';
 
 dotenv.config();
@@ -22,6 +23,8 @@ export const getRecipes = (q, page = 1, sort = 'r') => async (dispatch) => {
     const { data: { recipes } } = await axios.get(`https://www.food2fork.com/api/search?key=621e010c24b40e6f096a1508a90aa823&q=${query}&page=${page}&sort=${sort}`);
 
     dispatch({ type: GET_RECIPES_SUCCESS, recipes });
+
+    if (recipes.length < 1) dispatch({ type: MARK_RECIPES_END });
   } catch ({ message: error }) {
     dispatch({ type: GET_RECIPES_FAILED, error });
   }
