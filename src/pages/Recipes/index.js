@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
-  Container, Row, Col, Form, FormControl, Button, Spinner, Toast,
+  Container, Row, Col, Form, Button, Spinner, Toast,
 } from 'react-bootstrap';
 import debounce from 'lodash.debounce';
 import { getRecipes, clearRecipes } from '../../store/actions';
@@ -84,8 +84,9 @@ class Recipes extends Component {
                     <option value="t">Trendingness</option>
                   </Form.Control>
                 </Form.Group>
-                <Form.Group>
-                  <FormControl
+                <Form.Group controlId="search">
+                  <Form.Label className=" mr-sm-2">Search</Form.Label>
+                  <Form.Control
                     type="text"
                     placeholder="Eg name, ingredient"
                     className=" mr-sm-2"
@@ -98,6 +99,15 @@ class Recipes extends Component {
             </Col>
             <Col />
           </Row>
+          {
+            searchFieldInput && (
+            <h2>
+              Search results for &ldquo;
+              {searchFieldInput}
+              &rdquo;
+            </h2>
+            )
+          }
           <div className="cards">
             {recipes.map((recipe) => (<RecipeCard key={recipe.recipe_id} recipe={recipe} />))}
           </div>
