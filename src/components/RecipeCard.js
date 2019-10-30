@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 function RecipeCard({
   recipe: {
-    image_url: imageUrl, title, image_url: sourceUrl, f2f_url: f2fUrl, publisher,
+    image_url: imageUrl, title, source_url: sourceUrl, f2f_url: f2fUrl, publisher,
   },
 }) {
   return (

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
-  Container, Row, Col, Form, Button, Spinner, Toast,
+  Container, Form, Button, Spinner, Toast,
 } from 'react-bootstrap';
 import debounce from 'lodash.debounce';
 import { getRecipes, clearRecipes } from '../../store/actions';
@@ -73,32 +73,26 @@ class Recipes extends Component {
       <main className="recipes-background" ref={(c) => { this.myscroll = c; }}>
         <Container>
           <h1>Search Recipes by name or ingredient</h1>
-          <Row>
-            <Col />
-            <Col xs={12} md={8}>
-              <Form inline variant="dark" onSubmit={this.searchRecipes}>
-                <Form.Group controlId="sortBy" className=" mr-sm-2">
-                  <Form.Label className=" mr-sm-2">Sort by</Form.Label>
-                  <Form.Control as="select" onChange={this.handleSortChange} value={sortInput}>
-                    <option value="r">Rating</option>
-                    <option value="t">Trendingness</option>
-                  </Form.Control>
-                </Form.Group>
-                <Form.Group controlId="search">
-                  <Form.Label className=" mr-sm-2">Search</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Eg name, ingredient"
-                    className=" mr-sm-2"
-                    value={searchFieldInput}
-                    onChange={this.handleSearchFieldInputChange}
-                  />
-                  <Button variant="dark" type="submit">Submit</Button>
-                </Form.Group>
-              </Form>
-            </Col>
-            <Col />
-          </Row>
+          <Form variant="dark" onSubmit={this.searchRecipes}>
+            <Form.Group controlId="sortBy" className=" mr-sm-2">
+              <Form.Label className=" mr-sm-2">Sort by</Form.Label>
+              <Form.Control as="select" onChange={this.handleSortChange} value={sortInput}>
+                <option value="r">Rating</option>
+                <option value="t">Trendingness</option>
+              </Form.Control>
+            </Form.Group>
+            <Form.Group controlId="search">
+              <Form.Label className=" mr-sm-2">Search</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Search by Name or Ingredients"
+                className=" mr-sm-2"
+                value={searchFieldInput}
+                onChange={this.handleSearchFieldInputChange}
+              />
+              <Button variant="dark" type="submit">Submit</Button>
+            </Form.Group>
+          </Form>
           {
             searchFieldInput && (
             <h2>
