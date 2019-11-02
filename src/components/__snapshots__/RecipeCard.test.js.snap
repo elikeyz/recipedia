@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Recipe Card Component renders 1`] = `
+<Card
+  body={false}
+>
+  <CardImg
+    alt="Baked Chicken and Spinach Flautas"
+    src="http://static.food2fork.com/205xNxchickenandspinachflautas2296f.jpg.pagespeed.ic.RNEW9wsRU.jpg"
+    variant="top"
+  />
+  <CardBody>
+    <CardTitle>
+      Baked Chicken and Spinach Flautas
+    </CardTitle>
+    <CardText>
+      <a
+        href="http://www.healthy-delicious.com/2012/03/baked-chicken-and-spinach-flautas/"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        Published by
+         
+        Healthy Delicious
+      </a>
+    </CardText>
+    <Button
+      active={false}
+      className="btn-block"
+      disabled={false}
+      href="http://food2fork.com/view/0c2e90"
+      rel="noopener noreferrer"
+      target="_blank"
+      type="button"
+      variant="dark"
+    >
+      View on Food2Fork
+    </Button>
+  </CardBody>
+</Card>
+`;

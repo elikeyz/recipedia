@@ -9,7 +9,7 @@ import { getRecipes, clearRecipes } from '../../store/actions';
 import RecipeCard from '../../components/RecipeCard';
 import './recipes.scss';
 
-class Recipes extends Component {
+export class Recipes extends Component {
   constructor(props) {
     super(props);
 

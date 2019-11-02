@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Component renders 1`] = `
+<header>
+  <Navbar
+    bg="dark"
+    collapseOnSelect={false}
+    expand={true}
+    fixed="top"
+    variant="dark"
+  >
+    <Link
+      to="/"
+    >
+      <NavbarBrand>
+        <img
+          alt="Recipedia logo"
+          className="d-inline-block align-top"
+          height="30"
+          src="recipedia logo.png"
+          width="30"
+        />
+         Recipedia
+      </NavbarBrand>
+    </Link>
+  </Navbar>
+</header>
+`;

@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home Component renders 1`] = `
+<main
+  className="landing-background"
+>
+  <div
+    className="overlay"
+  >
+    <Container
+      className="landing-container"
+      fluid={false}
+    >
+      <h1>
+        Welcome to Recipedia
+      </h1>
+      <h2>
+        Explore thousands of recipes from across the globe
+      </h2>
+      <br />
+      <Link
+        to="/recipes"
+      >
+        <Button
+          active={false}
+          disabled={false}
+          size="lg"
+          type="button"
+          variant="dark"
+        >
+          Explore
+        </Button>
+      </Link>
+    </Container>
+  </div>
+</main>
+`;

@@ -3,9 +3,6 @@ import {
   GET_RECIPES_FAILED,
   GET_RECIPES_SUCCESS,
   CLEAR_RECIPES,
-  GET_RECIPE_STARTED,
-  GET_RECIPE_SUCCESS,
-  GET_RECIPE_FAILED,
   MARK_RECIPES_END,
 } from '../constants';
 
@@ -13,9 +10,7 @@ const initialState = {
   error: '',
   recipes: [],
   nextPage: 1,
-  recipe: {},
   isLoadingRecipes: false,
-  isLoadingRecipe: false,
   hasMore: true,
 };
 
@@ -33,15 +28,11 @@ const recipeReducer = (state = initialState, action) => {
     case GET_RECIPES_FAILED:
       return { ...state, isLoadingRecipes: false, error: action.error };
     case CLEAR_RECIPES:
-      return { ...state, recipes: [], nextPage: 1, hasMore: true };
+      return {
+        ...state, recipes: [], nextPage: 1, hasMore: true,
+      };
     case MARK_RECIPES_END:
       return { ...state, hasMore: false };
-    case GET_RECIPE_STARTED:
-      return { ...state, isLoadingRecipe: true, error: '' };
-    case GET_RECIPE_SUCCESS:
-      return { ...state, isLoadingRecipe: false, recipe: action.recipe };
-    case GET_RECIPE_FAILED:
-      return { ...state, isLoadingRecipe: false, error: action.error };
     default:
       return state;
   }

@@ -6,9 +6,6 @@ import {
   GET_RECIPES_FAILED,
   GET_RECIPES_SUCCESS,
   CLEAR_RECIPES,
-  GET_RECIPE_STARTED,
-  GET_RECIPE_SUCCESS,
-  GET_RECIPE_FAILED,
   MARK_RECIPES_END,
 } from '../constants';
 
@@ -32,16 +29,4 @@ export const getRecipes = (q, page = 1, sort = 'r') => async (dispatch) => {
 
 export const clearRecipes = () => (dispatch) => {
   dispatch({ type: CLEAR_RECIPES });
-};
-
-export const getRecipe = (id) => async (dispatch) => {
-  dispatch({ type: GET_RECIPE_STARTED });
-
-  try {
-    const { recipe } = await axios.get(`https://www.food2fork.com/api/get?key=621e010c24b40e6f096a1508a90aa823&rId=${id}`);
-
-    dispatch({ type: GET_RECIPE_SUCCESS, recipe });
-  } catch ({ message: error }) {
-    dispatch({ type: GET_RECIPE_FAILED, error });
-  }
 };

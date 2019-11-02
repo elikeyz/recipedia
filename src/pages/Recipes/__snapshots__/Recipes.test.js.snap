@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Recipes Component renders 1`] = `
+<main
+  className="recipes-background"
+>
+  <Container
+    fluid={false}
+  >
+    <h1>
+      Search Recipes by name or ingredient
+    </h1>
+    <Form
+      inline={false}
+      onSubmit={[Function]}
+      variant="dark"
+    >
+      <FormGroup
+        className=" mr-sm-2"
+        controlId="sortBy"
+      >
+        <FormLabel
+          className=" mr-sm-2"
+          column={false}
+          srOnly={false}
+        >
+          Sort by
+        </FormLabel>
+        <FormControl
+          as="select"
+          onChange={[Function]}
+          value="r"
+        >
+          <option
+            value="r"
+          >
+            Rating
+          </option>
+          <option
+            value="t"
+          >
+            Trendingness
+          </option>
+        </FormControl>
+      </FormGroup>
+      <FormGroup
+        controlId="search"
+      >
+        <FormLabel
+          className=" mr-sm-2"
+          column={false}
+          srOnly={false}
+        >
+          Search
+        </FormLabel>
+        <FormControl
+          className=" mr-sm-2"
+          onChange={[Function]}
+          placeholder="Search by Name or Ingredients"
+          type="text"
+          value=""
+        />
+        <Button
+          active={false}
+          disabled={false}
+          type="submit"
+          variant="dark"
+        >
+          Submit
+        </Button>
+      </FormGroup>
+    </Form>
+    <div
+      className="cards"
+    >
+      <RecipeCard
+        key="0c2e90"
+        recipe={
+          Object {
+            "f2f_url": "http://food2fork.com/view/0c2e90",
+            "image_url": "http://static.food2fork.com/205xNxchickenandspinachflautas2296f.jpg.pagespeed.ic.RNEW9wsRU.jpg",
+            "publisher": "Healthy Delicious",
+            "publisher_url": "http://www.healthy-delicious.com",
+            "recipe_id": "0c2e90",
+            "social_rank": 100,
+            "source_url": "http://www.healthy-delicious.com/2012/03/baked-chicken-and-spinach-flautas/",
+            "title": "Baked Chicken and Spinach Flautas",
+          }
+        }
+      />
+    </div>
+  </Container>
+</main>
+`;
