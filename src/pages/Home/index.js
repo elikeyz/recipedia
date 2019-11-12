@@ -8,8 +8,8 @@ function Home() {
     <main className="landing-background">
       <div className="overlay">
         <Container className="landing-container">
-          <h1>Welcome to Recipedia</h1>
-          <h2>Explore thousands of recipes from across the globe</h2>
+          <h1 className="landing-heading">Welcome to Recipedia</h1>
+          <p className="landing-text">Explore thousands of recipes from across the globe</p>
           <br />
           <Link to="/recipes">
             <Button size="lg" variant="dark">Explore</Button>

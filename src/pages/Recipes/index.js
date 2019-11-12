@@ -89,6 +89,7 @@ export class Recipes extends Component {
                 className=" mr-sm-2"
                 value={searchFieldInput}
                 onChange={this.handleSearchFieldInputChange}
+                required
               />
               <Button variant="dark" type="submit">Submit</Button>
             </Form.Group>
@@ -99,6 +100,10 @@ export class Recipes extends Component {
               Search results for &ldquo;
               {searchFieldInput}
               &rdquo;
+              sorted by {((sortInput) => {
+                if (sortInput === 'r') return 'rating';
+                if (sortInput === 't') return 'trendingness';
+              })(sortInput)}
             </h2>
             )
           }
