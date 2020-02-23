@@ -7,7 +7,7 @@
     "test": "jest",
     "test:watch": "jest --watchAll",
     "start": "webpack-dev-server --mode development --open --hot",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production && cp _redirects build/_redirects"
   },
   "repository": {
     "type": "git",

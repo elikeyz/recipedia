@@ -100,9 +100,12 @@ export class Recipes extends Component {
               Search results for &ldquo;
               {searchFieldInput}
               &rdquo;
-              sorted by {((sortInput) => {
-                if (sortInput === 'r') return 'rating';
-                if (sortInput === 't') return 'trendingness';
+              sorted by
+              {' '}
+              {((input) => {
+                if (input === 'r') return 'rating';
+                if (input === 't') return 'trendingness';
+                return 'rating';
               })(sortInput)}
             </h2>
             )
